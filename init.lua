@@ -192,6 +192,10 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
+--
+--  Golang
+vim.opt_local.shiftwidth = 4
+vim.opt_local.tabstop = 4
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode

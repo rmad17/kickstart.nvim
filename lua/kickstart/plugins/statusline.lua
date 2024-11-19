@@ -16,16 +16,23 @@ local colors = {
   white = '#f3f3f3',
 }
 
+local function lines()
+  local total = vim.fn.line '$'
+  local line = vim.fn.line '.'
+  local col = vim.fn.charcol '.'
+  return string.format('%3d/%d:%-3d', line, total, col)
+end
+
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   opts = {
     options = {
-      section_separators = { left = '', right = '' },
+      -- section_separators = { left = '', right = '' },
       -- section_separators = { left = '', right = '' },
       -- component_separators = { left = '', right = '' },
       component_separators = { left = '', right = '' },
-      -- section_separators = '',
+      section_separators = '',
       -- component_separators = '',
       theme = 'auto',
     },
@@ -73,7 +80,7 @@ return {
         'encoding',
       },
       lualine_y = { { 'datetime', style = '%H:%M' }, 'progress' },
-      lualine_z = { 'location', 'selectioncount' },
+      lualine_z = { lines, 'selectioncount' },
     },
   },
 }

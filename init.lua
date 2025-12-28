@@ -693,7 +693,7 @@ require('lazy').setup({
         desc = 'LSP: Disable hover capability from Ruff',
       })
       -- Python lsp config with Ruff and Pyright
-      require('lspconfig').pyright.setup {
+      vim.lsp.config('pyright', {
         settings = {
           pyright = {
             -- Using Ruff's import organizer
@@ -706,15 +706,16 @@ require('lazy').setup({
             },
           },
         },
-      }
-      require('lspconfig').ruff.setup {
+      })
+      vim.lsp.config('ruff', {
         trace = 'messages',
         init_options = {
           settings = {
             logLevel = 'debug',
           },
         },
-      }
+      })
+      vim.lsp.enable { 'pyright', 'ruff' }
     end,
   },
 
